@@ -23,7 +23,7 @@ moduleForComponent('disqus-comments', 'Unit | Component | disqus comments', {
   }
 });
 
-test('it renders', function(assert) {
+test('it should correctly resolve properties', function(assert) {
   const properties = {
     categoryId: 123,
     identifier: 'emberdisqustest-fake',
@@ -31,9 +31,6 @@ test('it renders', function(assert) {
   };
 
   let resetHasBeenCalled = false;
-
-  assert.equal(component._state, 'preRender',
-    'The component instance should be created successfully');
 
   ['categoryId', 'title'].forEach(function(property) {
 
@@ -66,16 +63,4 @@ test('it renders', function(assert) {
     'Updating the component properties should call reset at least once');
 
   });
-
-  this.render();
-
-  assert.equal(component._state, 'inDOM',
-    'The component should render on the page');
-
-  assert.ok(component.$().hasClass('disqus-comments'),
-    'The component should have a .disqus-comments class');
-
-  assert.equal(component.get('element').id, 'disqus_thread',
-    'The component should have a #disqus_thread class per the Disqus documentation');
-
 });
